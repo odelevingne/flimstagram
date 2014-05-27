@@ -1,8 +1,17 @@
+<% @all_posts.each do |post| %>
+	<%= post.picture.url %><br/>
+	<%= post.description %><br/><br/>
+<% end %>
+
+<Br/><br/>
+
 No posts have been made
 
-<form enctype="multipart/form-data" method="post">
-	<input type="file" name="file" value="Choose file" />
+<Br/><br/>
 
-<button type='submit'>Upload</button>
-</form>
+<%= form_for @post, html: { multipart: true } do |f| %>
+	<%= f.file_field :picture %>
+	<textarea name="description"></textarea>
+	<%= f.button "Upload", action: "create" %>
+<% end %>
 

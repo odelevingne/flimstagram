@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe 'post index page' do
+describe 'Posts home page:' do
 
-	context 'logged in' do 
+	context 'When logged in:' do 
 
 		before do
-			user = User.create(email: 'ollie@ollie.com', password: 'hello', password_confirmation: 'hello')
+			user = User.create(email: 'ollie@ollie.com', password: '12345678', password_confirmation: '12')
 			login_as user
 		end
 
@@ -15,36 +15,35 @@ describe 'post index page' do
 			expect(page).to have_content 'No posts have been made'
 		end
 	end
+
 end
 
+describe 'Create a new post:' do
 
-describe 'creating a new post' do
-
-	context 'logged out' do
+	context 'When logged out:' do
 
 		it 'should take us to the sign up page' do
 			visit '/posts'
 			expect(current_path).to have_content '/users/sign_in'
 			expect(page).to have_content 'You need to sign in or sign up before continuing'
 		end
+
 	end
 
-	context 'adds post to the post index' do
+	context 'When logged in' do
 
-		xit'should display a post on the index page' do
-			visit '/posts'
-			path = "/Users/OliverDelevingne/Projects/flimstagram/flimstagram/app/assets/posts/image.jpeg"
-			attach_file('file', path)
-			click_button 'Upload'
-			expect(page).to have_content 'Post uploaded successfully!'
+		before do
+			user = User.create(email: 'ollie@ollie.com', password: '12345678', password_confirmation: '12345678')
+			login_as user
 		end
-	end
-end
 
-describe 'logging in' do
-	xspecify 'a user can log in' do
-		visit '/posts'
+		it 'should add and display a post on the home page' do
+			visit '/posts'
+			path = Rails.root.join("app/assets/posts/image.jpeg")
+			attach_file('picture', path)
+			click_button 'Upload'
+			expect(page).to have_content 'Post uploaded successfully!'ƒatta
+		endas
 
-		expect
 	end
 end
