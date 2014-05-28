@@ -12,4 +12,17 @@ describe 'writing comments' do
 
 		expect(page).to have_content '0 comments'
 	end
+
+
+	specify 'adding a comment to a post' do
+		visit '/posts'
+		click_link 'Add comment'
+
+		fill_in 'Comment', with: 'This is a great snap'
+		click_button 'Add comment'
+
+		expect(current_path).to eq '/posts'
+		expect(page).to have_content 'This is a great snap'
+
+	end
 end

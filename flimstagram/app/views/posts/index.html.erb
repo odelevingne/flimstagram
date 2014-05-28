@@ -1,23 +1,35 @@
 <% if @all_posts.any? %>
-
+	
 	<% @all_posts.each do |post| %>
+	<div class='post'>
 		<%= image_tag post.picture.url %><br/>
-		<%= post.description %><br/><br/>
+		<%= post.description %><br/>
+			<ul>
+				<% post.comments.each do |comment| %>
+					<li> <%= comment.comment %> </li>
+				<% end %>
+			</ul>
+			<% if user_signed_in? %>
+				<%= link_to "Add comment", new_post_comment_path(post) %>
+			<% end %>
 	<% end %>
 
 	<% else %>
 
 		<Br/><br/>
-
 			No posts have been made
-
 		<Br/><br/>
 
 <% end %>
+	
+	<h4>0 comments</h4>
+
 
 <%= form_for @post, html: { multipart: true } do |f| %>
 	<%= f.file_field :picture %>
 	<%= f.text_area :description %>
 	<%= f.button "Upload", action: "create" %>
 <% end %>
+
+</div>
 
