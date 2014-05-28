@@ -61,8 +61,9 @@ describe 'deleting posts' do
 			visit '/posts'
 			expect(page).to have_content 'Comment test'
 
-			click_button 'Delete post'
+			click_link 'Delete post'
 			expect(page).to have_content 'Deleted successfully!'
+			expect(page).not_to have_content 'Comment test'
 		end
 	end
 end
