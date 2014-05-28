@@ -1,13 +1,19 @@
-<% @all_posts.each do |post| %>
-	<%= image_tag post.picture.url %><br/>
-	<%= post.description %><br/><br/>
+<% if @all_posts.any? %>
+
+	<% @all_posts.each do |post| %>
+		<%= image_tag post.picture.url %><br/>
+		<%= post.description %><br/><br/>
+	<% end %>
+
+	<% else %>
+
+		<Br/><br/>
+
+			No posts have been made
+
+		<Br/><br/>
+
 <% end %>
-
-<Br/><br/>
-
-No posts have been made
-
-<Br/><br/>
 
 <%= form_for @post, html: { multipart: true } do |f| %>
 	<%= f.file_field :picture %>
