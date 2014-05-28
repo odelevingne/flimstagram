@@ -52,8 +52,9 @@ describe 'deleting posts' do
 	context 'my post' do
 
 		before do
-			user = User.create(email: 'ollie@ollie.com', password: '12345678', password_confirmation: '12345678')
-			login_as user
+			ollie = User.create(email: 'ollie@ollie.com', password: '12345678', password_confirmation: '12345678')
+			scott = User.create(email: 'scott@scott.com', password: '12345678', password_confirmation: '12345678')
+			login_as ollie
 			Post.create(description: 'Comment test')
 		end
 
