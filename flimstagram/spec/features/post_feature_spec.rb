@@ -46,3 +46,31 @@ describe 'Create a new post:' do
 		end
 	end
 end
+
+describe 'deleting posts' do
+	
+	context 'my post' do
+
+		before do
+			user = User.create(email: 'ollie@ollie.com', password: '12345678', password_confirmation: '12345678')
+			login_as user
+			Post.create(description: 'Comment test')
+		end
+
+		it 'is removed from the posts page' do
+			visit '/posts'
+			expect(page).to have_content 'Comment test'
+
+			click_button 'Delete post'
+			expect(page).to have_content 'Deleted successfully!'
+		end
+	end
+end
+
+
+
+
+
+
+
+
