@@ -10,5 +10,5 @@ class Post < ActiveRecord::Base
  	}
  	validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
  	has_many :comments	
- 	belongs_to :users
+ 	belongs_to :user
 end

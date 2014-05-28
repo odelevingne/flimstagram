@@ -49,14 +49,14 @@ end
 
 describe 'deleting posts' do
 	
-	context 'my post' do
-
-		before do
+	before do
 			ollie = User.create(email: 'ollie@ollie.com', password: '12345678', password_confirmation: '12345678')
 			scott = User.create(email: 'scott@scott.com', password: '12345678', password_confirmation: '12345678')
 			login_as ollie
 			Post.create(description: 'Comment test')
 		end
+
+	context 'my post' do
 
 		it 'is removed from the posts page' do
 			visit '/posts'
@@ -65,6 +65,16 @@ describe 'deleting posts' do
 			click_link 'Delete post'
 			expect(page).to have_content 'Deleted successfully!'
 			expect(page).not_to have_content 'Comment test'
+		end
+	end
+
+	context "someone else's post" do
+
+		xit 'is not removed from the posts page and displays a message' do
+				visit '/posts' 
+				expect(page).to have_content 'Comment test'
+
+				click_link 'Delete post'
 		end
 	end
 end
