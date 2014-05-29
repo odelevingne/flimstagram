@@ -12,7 +12,6 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		# upload file
 		@post = Post.new(params['post'].permit(:picture, :description, :tag_names))
 		@post.user = current_user
 		if @post.save!
