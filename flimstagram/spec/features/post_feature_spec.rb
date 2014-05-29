@@ -39,10 +39,13 @@ describe 'Create a new post:' do
 
 		it 'should add and display a post on the home page' do
 			visit '/posts'
+			fill_in 'Description', with: 'This is a picture'
 			path = Rails.root.join("app/assets/posts/image.jpeg")
 			attach_file('post[picture]', path)
 			click_button 'Upload'
 			expect(page).to have_content 'Post uploaded successfully!'
+			expect(page).to have_content 'This is a picture'
+			expect(page).to have_css 'img.uploaded-pic'
 		end
 	end
 end

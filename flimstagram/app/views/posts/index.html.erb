@@ -2,7 +2,7 @@
 	
 	<% @all_posts.each do |post| %>
 	<div class='post'>
-		<%= image_tag post.picture.url %><br/>
+		<%= image_tag post.picture.url, class: 'uploaded-pic' %><br/>
 		<%= post.description %><br/>
 			<ul>
 				<% post.comments.each do |comment| %>
@@ -28,9 +28,15 @@
 
 
 <%= form_for @post, html: { multipart: true } do |f| %>
+	
+	<%= f.label :picture %>
 	<%= f.file_field :picture %>
+
+	<%= f.label :description %> 
 	<%= f.text_area :description %>
+	
 	<%= f.button "Upload", action: "create" %>
+
 <% end %>
 
 </div>
