@@ -11,4 +11,15 @@ class Post < ActiveRecord::Base
  	validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
  	has_many :comments	
  	belongs_to :user
+ 	has_and_belongs_to_many :tags
+
+ 	def tag_names
+ 		''
+ 	end
+
+ 	def tag_names=(tag_names)
+ 		return if tag_names.blank?
+		self.tags.create(name: tag_names)
+ 		# self.tags << tag_names
+ 	end
 end
