@@ -41,7 +41,7 @@ describe 'Create a new post:' do
 			visit '/posts'
 			fill_in 'Description', with: 'This is a picture'
 			path = Rails.root.join("app/assets/posts/image.jpeg")
-			attach_file('post[picture]', path)
+			attach_file('Picture', path)
 			click_button 'Upload'
 			expect(page).to have_content 'Post uploaded successfully!'
 			expect(page).to have_content 'This is a picture'
