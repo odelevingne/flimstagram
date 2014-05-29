@@ -4,6 +4,9 @@
 	<div class='post'>
 		<%= image_tag post.picture.url, class: 'uploaded-pic' %><br/>
 		<%= post.description %><br/>
+		<% post.tags.each do |tag| %>
+					<%= link_to tag.name, '#' %>
+				<% end %>
 			<ul>
 				<% post.comments.each do |comment| %>
 					<li> <%= comment.comment %> </li>
