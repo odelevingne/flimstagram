@@ -49,15 +49,18 @@ end
 
 describe 'deleting posts' do
 	
-	before do
-			ollie = User.create(email: 'ollie@ollie.com', password: '12345678', password_confirmation: '12345678')
-			scott = User.create(email: 'scott@scott.com', password: '12345678', password_confirmation: '12345678')
-			login_as ollie
-			Post.create(description: 'Comment test')
-		end
+	
 
 	context 'my post' do
 
+		before do
+			ollie = User.create(email: 'ollie@ollie.com', password: '12345678', password_confirmation: '12345678')
+			scott = User.create(email: 'scott@scott.com', password: '12345678', password_confirmation: '12345678')
+			login_as ollie	
+			Post.create(description: 'Comment test', user: ollie)
+		end
+
+		
 		it 'is removed from the posts page' do
 			visit '/posts'
 			expect(page).to have_content 'Comment test'
@@ -70,11 +73,17 @@ describe 'deleting posts' do
 
 	context "someone else's post" do
 
-		xit 'is not removed from the posts page and displays a message' do
-				visit '/posts' 
-				expect(page).to have_content 'Comment test'
+		before do
+			ollie = User.create(email: 'ollie@ollie.com', password: '12345678', password_confirmation: '12345678')
+			scott = User.create(email: 'scott@scott.com', password: '12345678', password_confirmation: '12345678')
+			login_as ollie	
+			Post.create(description: 'Comment test', user: ollie)
+		end
 
-				click_link 'Delete post'
+
+		it 'is not removed from the posts page and displays a message' do
+				visit '/posts' 
+				expect(page).not_to have_link "Delete post"
 		end
 	end
 end
