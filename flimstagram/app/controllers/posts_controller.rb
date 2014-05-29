@@ -25,12 +25,19 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
-		@post = Post.find(params[:id])
+		
+		# @post = current_user.posts.find(params[:id]) is used in place of:
+		# "@post = Post.find(params[:id])
+		# if @post.user == current_user
+		# else" because it does not retrieve the record from the database and is more robust.
+		# This would become increasingly important in complex actions where we want to prevent
+		# the record being retrieved at all.
+		@post = current_user.posts.find(params[:id])
 		@post.delete
 		flash[:notice] = 'Deleted successfully!'
+	rescue ActiveRecord::RecordNotFound
+		flash[:alert] = 'This is not your post!'
+	ensure 
 		redirect_to '/posts'
 	end
-
-
-
 end
