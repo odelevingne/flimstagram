@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
 
+	before_action :authenticate_user!
+
 	def index
-		authenticate_user!
 		@all_posts = Post.all
 		@post = Post.new
 	end
@@ -11,9 +12,9 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		authenticate_user!
 		# upload file
 		@post = Post.new(params['post'].permit(:picture, :description))
+		@post.user = current_user
 		if @post.save!
 			flash[:notice] = 'Post uploaded successfully!'
 			redirect_to '/posts'

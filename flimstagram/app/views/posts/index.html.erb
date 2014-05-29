@@ -10,11 +10,12 @@
 				<% end %>
 			</ul>
 			<% if user_signed_in? %>
-				<%= link_to "Delete post", post_path(post), method: :delete %>
 				<%= link_to "Add comment", new_post_comment_path(post) %>
 			<% end %>
+			<% if post.user == current_user %>
+				<%= link_to "Delete post", post_path(post), method: :delete %>
+			<% end %>
 	<% end %>
-
 	<% else %>
 
 		<Br/><br/>
