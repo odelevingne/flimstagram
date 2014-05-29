@@ -19,7 +19,7 @@ class Post < ActiveRecord::Base
 
  	def tag_names=(tag_names)
  		return if tag_names.blank?
- 		tag_names.split(', ').each do |tag_name|
+ 		tag_names.split(', ').uniq.each do |tag_name|
  		hash_name= '#' + tag_name.delete('#')
 		self.tags.create(name: hash_name)
 		end

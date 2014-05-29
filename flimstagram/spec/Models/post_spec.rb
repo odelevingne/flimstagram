@@ -28,15 +28,21 @@ describe Post do
 				post.tag_names = '#anything'
 				expect(post.tags.last.name).to eq '#anything'
 			end
+		end
 
 		describe 'multiple comma-separated tags' do
-			it 'adds each tag to the post' do
+			it 'adds each tag to the post without spaces' do
 				post.tag_names = 'yippee, kai'
 				expect(post.tags.count).to eq 2
 			end
 		end
 
+		describe 'multiple duplicate tags' do
+			it'only uses unique tags' do
+				post.tag_names = 'yippee, kai, yippee'
 
+				expect(post.tags.count).to eq 2
+			end
 		end
 	end
 end
