@@ -19,10 +19,12 @@ class Post < ActiveRecord::Base
 
  	def tag_names=(tag_names)
  		return if tag_names.blank?
+ 		
  		tag_names.split(', ').uniq.each do |tag_name|
- 		hash_name= '#' + tag_name.delete('#')
-		self.tags.create(name: hash_name)
+ 			hash_name = '#' + tag_name.delete('#')
+
+			unique_tag = Tag.find_or_create_by(name: hash_name)
+			self.tags << unique_tag
 		end
- 		# self.tags << tag_names
  	end
 end

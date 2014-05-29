@@ -44,5 +44,16 @@ describe Post do
 				expect(post.tags.count).to eq 2
 			end
 		end
+
+		describe 'reusing tags' do
+			let!(:tag) { Tag.create(name: '#yippee') }
+
+			it 'reusues tags if they already exist in the database' do
+				post.tag_names = 'yippee'
+				expect(Tag.count).to eq 1
+
+				expect(tag.posts).to include post
+			end
+		end
 	end
 end
