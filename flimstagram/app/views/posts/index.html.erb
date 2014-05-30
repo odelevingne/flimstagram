@@ -1,23 +1,26 @@
 <% if @all_posts.any? %>
 	
 	<% @all_posts.each do |post| %>
-	<div class='post'>
+		<div class='post'>
 		<%= image_tag post.picture.url, class: 'uploaded-pic' %><br/>
+
 		<%= post.description %><br/>
+
 		<% post.tags.each do |tag| %>
-					<%= link_to tag.name, '#' %>
-				<% end %>
-			<ul>
-				<% post.comments.each do |comment| %>
-					<li> <%= comment.comment %> </li>
-				<% end %>
-			</ul>
-			<% if user_signed_in? %>
-				<%= link_to "Add comment", new_post_comment_path(post) %>
+				<%= link_to tag.name, '#' %>
+		<% end %>
+
+		<ul>
+			<% post.comments.each do |comment| %>
+				<li> <%= comment.comment %> </li>
 			<% end %>
-			<% if post.user == current_user %>
-				<%= link_to "Delete post", post_path(post), method: :delete %>
-			<% end %>
+		</ul>
+		<% if user_signed_in? %>
+			<%= link_to "Add comment", new_post_comment_path(post) %>
+		<% end %>
+		<% if post.user == current_user %>
+			<%= link_to "Delete post", post_path(post), method: :delete %>
+		<% end %>
 	<% end %>
 	<% else %>
 
