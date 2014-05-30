@@ -23,8 +23,8 @@ describe 'Create a new post:' do
 	context 'When logged out:' do
 
 		it 'should take us to the sign up page' do
-			visit '/posts'
-			expect(current_path).to have_content '/users/sign_in'
+			visit '/posts/new'
+			expect(current_path).to eq '/users/sign_in'
 			expect(page).to have_content 'You need to sign in or sign up before continuing'
 		end
 
@@ -38,7 +38,7 @@ describe 'Create a new post:' do
 		end
 
 		it 'should add and display a post on the home page' do
-			visit '/posts'
+			visit '/posts/new'
 			fill_in 'Description', with: 'This is a picture'
 			path = Rails.root.join("app/assets/posts/image.jpeg")
 			attach_file('Picture', path)

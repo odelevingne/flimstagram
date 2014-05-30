@@ -1,14 +1,13 @@
- <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <div class="container">
-      <h1>flimstagram</h1>
-      <p>The new home for your photos that no one wants to see</p>
-      <p> 
-      	<%= link_to 'Sign up', new_user_registration_path,class: 'btn btn-primary btn-lg' %>
-    </div>
+<div class="jumbotron">
+  <div class="container">
+    <h1>flimstagram</h1>
+    <p>The new home for your photos that no one wants to see</p>
+    <p> 
+    	<%= link_to 'Sign up', new_user_registration_path,class: 'btn btn-primary btn-lg' %>
   </div>
+</div>
 
-  <%= link_to 'Add new post', new_post_path, class: 'btn btn-primary btn-lg'%>
+<%= link_to 'Add new post', new_post_path, class: 'btn btn-primary btn-lg'%>
 
 <div class= 'container'>
 	<% if @all_posts.none? %>
@@ -21,13 +20,15 @@
 			<% @all_posts.each do |post| %>
 				<div class= 'col-md-4'>
 					<h2><%= post.description %></h2>
-					<p>Posted by: <%= post.user.email %></p>
+					<% if post.user %>
+						<p>Posted by: <%= post.user.email %></p>
+					<% end %>
 					<%= image_tag post.picture.url(:medium), class: 'uploaded-pic' %>
 					<br/><br/>
 					<% post.tags.each do |tag| %>
 							<%= link_to tag.name, '#' %>
 					<% end %>
-			
+
 					<ul>
 						<% post.comments.each do |comment| %>
 							<li><%= comment.comment %> </li>
