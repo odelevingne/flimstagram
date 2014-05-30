@@ -1,0 +1,55 @@
+_HiStOrY_V2_
+postgres# create database "odelevingne";
+create databse "odelevingne";
+create database "odelevingne";
+\q
+create database "OliverDelevingne" ;
+\q
+\q
+\q
+\q
+CREATE DATABASE "bookmark_manager_test";
+CREATE DATABASE "bookmark_manager_development";
+\q
+q
+w
+q
+\q
+\c
+\c yelpyelp_test
+\d
+\q
+psql yelpyelp_development
+\q
+/d
+\d
+\d
+exit
+psql flimstagram_development
+\q
+\d
+\d posts
+\q
+\d
+\d posts
+\d posts
+SELECT * FROM posts
+;
+exit
+\q
+select * from posts
+;
+\q
+select * from
+\q
+\h
+\?
+\q
+\q
+\d
+get * from posts
+\d posts
+\q
+\d
+\d posts
+\s users

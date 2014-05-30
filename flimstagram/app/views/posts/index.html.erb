@@ -21,6 +21,7 @@
 			<% @all_posts.each do |post| %>
 				<div class= 'col-md-4'>
 					<h2><%= post.description %></h2>
+					<p>Posted by: <%= post.user.email %></p>
 					<%= image_tag post.picture.url(:medium), class: 'uploaded-pic' %>
 					<br/><br/>
 					<% post.tags.each do |tag| %>
@@ -29,7 +30,7 @@
 			
 					<ul>
 						<% post.comments.each do |comment| %>
-							<li> <%= comment.comment %> </li>
+							<li><%= comment.comment %> </li>
 						<% end %>
 					</ul>
 
