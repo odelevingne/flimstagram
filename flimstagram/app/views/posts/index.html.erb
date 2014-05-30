@@ -1,62 +1,48 @@
  <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron">
     <div class="container">
-      <h1>Hello, world!</h1>
-      <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+      <h1>flimstagram</h1>
+      <p>The new home for your photos that no one wants to see</p>
       <p> 
       	<%= link_to 'Sign up', new_user_registration_path,class: 'btn btn-primary btn-lg' %>
     </div>
   </div>
 
-<% if @all_posts.any? %>
-	
-	<% @all_posts.each do |post| %>
-		<div class='post'>
-		<%= image_tag post.picture.url, class: 'uploaded-pic' %><br/>
+  <%= link_to 'Add new post', new_post_path, class: 'btn btn-primary btn-lg'%>
 
-		<%= post.description %><br/>
-
-		<% post.tags.each do |tag| %>
-				<%= link_to tag.name, '#' %>
-		<% end %>
-
-		<ul>
-			<% post.comments.each do |comment| %>
-				<li> <%= comment.comment %> </li>
-			<% end %>
-		</ul>
-		<% if user_signed_in? %>
-			<%= link_to "Add comment", new_post_comment_path(post) %>
-		<% end %>
-		<% if post.user == current_user %>
-			<%= link_to "Delete post", post_path(post), method: :delete %>
-		<% end %>
-	<% end %>
-	<% else %>
-
+<div class= 'container'>
+	<% if @all_posts.none? %>
 		<Br/><br/>
 			No posts have been made
+			0 comments
 		<Br/><br/>
+	<% else %>
+		<div class= 'row'>
+			<% @all_posts.each do |post| %>
+				<div class= 'col-md-4'>
+					<h2><%= post.description %></h2>
+					<%= image_tag post.picture.url(:medium), class: 'uploaded-pic' %>
+					<br/><br/>
+					<% post.tags.each do |tag| %>
+							<%= link_to tag.name, '#' %>
+					<% end %>
+			
+					<ul>
+						<% post.comments.each do |comment| %>
+							<li> <%= comment.comment %> </li>
+						<% end %>
+					</ul>
 
-<% end %>
-	
-	<h4>0 comments</h4>
+					<% if user_signed_in? %>
+						<%= link_to "Add comment", new_post_comment_path(post) %>
+					<% end %>
 
-
-<%= form_for @post, html: { multipart: true } do |f| %>
-	
-	<%= f.label :picture %>
-	<%= f.file_field :picture %>
-
-	<%= f.label :description %> 
-	<%= f.text_area :description %>
-
-	<%= f.label :tag_names, 'Tags' %>
-	<%= f.text_field :tag_names %>
-	
-	<%= f.button "Upload", action: "create" %>
-
-<% end %>
-
+					<% if post.user == current_user %>
+						<%= link_to "Delete post", post_path(post), method: :delete %>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
 </div>
 
