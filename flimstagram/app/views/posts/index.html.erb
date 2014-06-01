@@ -17,33 +17,7 @@
 		<Br/><br/>
 	<% else %>
 		<div class= 'row'>
-			<% @all_posts.each do |post| %>
-				<div class= 'col-md-4'>
-					<h2><%= post.description %></h2>
-					<% if post.user %>
-						<p>Posted by: <%= post.user.email %></p>
-					<% end %>
-					<%= image_tag post.picture.url(:medium), class: 'uploaded-pic' %>
-					<br/><br/>
-					<% post.tags.each do |tag| %>
-							<%= link_to tag.name, tag_path(tag) %>
-					<% end %>
-
-					<ul>
-						<% post.comments.each do |comment| %>
-							<li><%= comment.comment %> </li>
-						<% end %>
-					</ul>
-
-					<% if user_signed_in? %>
-						<%= link_to "Add comment", new_post_comment_path(post) %>
-					<% end %>
-
-					<% if post.user == current_user %>
-						<%= link_to "Delete post", post_path(post), method: :delete %>
-					<% end %>
-				</div>
-			<% end %>
+			<%= render @all_posts %>
 		</div>
 	<% end %>
 </div>
