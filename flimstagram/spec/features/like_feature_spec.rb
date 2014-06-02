@@ -7,7 +7,7 @@ describe 'Liking a post:' do
 	before do 
 		user = User.create(email: 'ollie@ollie.com', password: '12345678', password_confirmation: '12345678')
 		login_as user
-		Post.create(description: 'Test', tag_names: 'test, tags')
+		Post.create(description: 'Test', user: user, tag_names: 'test, tags')
 	end
 
 	specify 'a post has no likes when first created' do

@@ -1,7 +1,7 @@
 class LikesController < ApplicationController
 
 	def create
-		@post = Post.find params [:id]
+		@post = Post.find params[:post_id]
 		@post.likes.create
 		redirect_to '/posts'
 	end
