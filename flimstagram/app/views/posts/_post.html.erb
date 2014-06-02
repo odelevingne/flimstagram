@@ -23,6 +23,10 @@
 		<%= link_to "Delete post", post_path(post), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-primary btn-lg' %>
 	<% end %>
 
-	<%= link_to "❤ #{post.likes.count}", post_likes_path(post), method: :post, class: 'btn btn-lg btn-default btn-like' %>
+	<% if user_signed_in? %>
+		<%= link_to "❤ #{post.likes.count}", post_likes_path(post), method: :post, class: 'btn btn-lg btn-default btn-like' %>
+	<% else %>
+		<%= "❤ #{post.likes.count}" %>
+	<% end %>
 
 </div>
