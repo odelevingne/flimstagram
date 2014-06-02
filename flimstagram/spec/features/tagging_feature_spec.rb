@@ -11,16 +11,28 @@ describe 'tagging posts' do
 		fill_in 'Description', with: 'My new post'
 		path = Rails.root.join("app/assets/posts/image.jpeg")
 		attach_file('Picture', path)
-		fill_in 'Tags', with: 'lol, spiffing'
+		fill_in 'Tags', with: 'yippee, kai'
 		click_button 'Upload'
 
-		expect(page).to have_link '#lol'
-		expect(page).to have_link '#spiffing'
+		expect(page).to have_link '#yippee'
+		expect(page).to have_link '#kai'
 	end
+end
 
-	it 'can filter posts by tag' do
-		Post.create(description: 'Test1', tag_names: 'yippee')
-		Post.create(description: 'Test2', tag_names: 'kai')
+	describe 'filtering posts by tag' do
+		before do
+			Post.create(description: 'Test1', tag_names: 'yippee')
+			Post.create(description: 'Test2', tag_names: 'kai')
+		end
+
+		it 'uses the tag name in the url' do
+			visit'/posts'
+			click_link '#yippee'
+
+			expect(current_path).to eq '/tags/yippee'
+		end
+
+		it 'only shows posts with the selected tag' do
 
 		visit'/posts'
 		click_link '#yippee'
