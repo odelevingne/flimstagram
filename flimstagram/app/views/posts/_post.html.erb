@@ -23,6 +23,6 @@
 		<%= link_to "Delete post", post_path(post), method: :delete, class: 'btn btn-primary btn-lg' %>
 	<% end %>
 
-	<%= link_to "❤ 0", '#', class: 'btn btn-lg btn-default btn-like' %>
+	<%= link_to "❤ 0", post_likes_path(post), method: :post, class: 'btn btn-lg btn-default btn-like' %>
 
 </div>
