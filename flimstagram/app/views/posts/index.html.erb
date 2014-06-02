@@ -3,7 +3,11 @@
     <h1>flimstagram</h1>
     <p>The new home for your photos that no one wants to see</p>
     <p> 
-    	<%= link_to 'Sign up', new_user_registration_path,class: 'btn btn-primary btn-lg' %>
+    	<% if user_signed_in? %>
+    	    <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-primary btn-lg') %>
+    	<% else %>	
+    		<%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
+    <% end %>
   </div>
 </div>
 
