@@ -4,3 +4,4 @@ class TagsController < ApplicationController
 		@tag = Tag.find_by(name: '#' + params[:id])
 	end
 end
+ 

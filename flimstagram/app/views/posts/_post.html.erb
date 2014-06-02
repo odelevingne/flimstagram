@@ -16,10 +16,13 @@
 	</ul>
 
 	<% if user_signed_in? %>
-		<%= link_to "Add comment", new_post_comment_path(post) %>
+		<%= link_to "Add comment", new_post_comment_path(post), class: 'btn btn-primary btn-lg' %>
 	<% end %>
 
 	<% if post.user == current_user %>
-		<%= link_to "Delete post", post_path(post), method: :delete %>
+		<%= link_to "Delete post", post_path(post), method: :delete, class: 'btn btn-primary btn-lg' %>
 	<% end %>
+
+	<%= link_to "❤ 0", '#', class: 'btn btn-lg btn-default btn-like' %>
+
 </div>

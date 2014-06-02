@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'writing comments' do 
+describe 'Writing comments:' do 
 	before do 
 			user = User.create(email: 'ollie@ollie.com', password: '12345678', password_confirmation: '12345678')
 			login_as user

@@ -30,7 +30,7 @@ describe 'Create a new post:' do
 
 	end
 
-	context 'When logged in' do
+	context 'When logged in:' do
 
 		before do
 			user = User.create(email: 'ollie@ollie.com', password: '12345678', password_confirmation: '12345678')
@@ -50,11 +50,11 @@ describe 'Create a new post:' do
 	end
 end
 
-describe 'deleting posts' do
+describe 'Deleting posts:' do
 	
 	
 
-	context 'my post' do
+	context 'My post:' do
 
 		before do
 			ollie = User.create(email: 'ollie@ollie.com', password: '12345678', password_confirmation: '12345678')
@@ -73,7 +73,7 @@ describe 'deleting posts' do
 		end
 	end
 
-	context "someone else's post" do
+	context "Someone else's post:" do
 
 		before do
 			ollie = User.create(email: 'ollie@ollie.com', password: '12345678', password_confirmation: '12345678')

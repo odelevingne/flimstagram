@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'tagging posts' do
+describe 'Tagging posts:' do
 	before do
 		ollie = User.create(email: 'ollie@ollie.com', password: '12345678', password_confirmation: '12345678')
 		login_as ollie
@@ -19,7 +19,7 @@ describe 'tagging posts' do
 	end
 end
 
-	describe 'filtering posts by tag' do
+	describe 'Filtering posts by tag:' do
 		before do
 			Post.create(description: 'Test1', tag_names: 'yippee')
 			Post.create(description: 'Test2', tag_names: 'kai')
