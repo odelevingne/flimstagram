@@ -1,11 +1,9 @@
 <br>
 <br>
+	<%= form_for [@post, @comment] do |f| %>
 
-<%= form_for [@post, @comment] do |f| %>
+		<%= f.label :comment %>
+		<%= f.text_area :comment %>
+		<%= f.submit "Add comment" %>
 
-	<%= f.label :comment %>
-	<%= f.text_area :comment %>
-	<%= f.submit "Add comment" %>
-
-<% end %>
-
+	<% end %>

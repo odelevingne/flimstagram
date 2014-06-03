@@ -27,10 +27,10 @@
 		<% if like = current_user.likes.find_by(post: post) %>
 		  <%= link_to "♥ #{post.likes.count}", post_like_path(post.id, like), method: :delete, :class => 'btn btn-lg btn-default btn-like'%>	     
 		<% else %>
-		  <%= link_to "♥ #{post.likes.count}", post_likes_path(post), method: :post, :class => 'btn btn-lg btn-default btn-like'%>
+		  <%= link_to "♥ #{post.likes.count}", post_likes_path(post), :class => 'btn btn-lg btn-default btn-like'%>
 		<% end %>
 	<% else %>
-  	<%= link_to "♥ #{post.likes.count}", '#', :class => 'btn btn-lg btn-default btn-like'%>
+  	<%= link_to "♥ #{post.likes.count}", new_user_session_path, :class => 'btn btn-lg btn-default btn-like'%>
   <% end %>
 
 </div>
