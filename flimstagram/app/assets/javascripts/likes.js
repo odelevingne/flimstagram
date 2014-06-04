@@ -11,3 +11,18 @@ $(document).ready(function(){
 		postElem.text('♥ ' + post .new_like_count);
 	});
 })
+
+
+$(document).ready(function(){
+	$('.btn-unlike').on('click', function(event){
+		event.preventDefault();
+		$.post(this.href);
+	});
+
+	var connection = new WebSocketRails('localhost:3000/websocket');
+	channel = connection.subscribe('likes');
+	channel.bind('destroy', function(post) {
+		var postElem = $('.post[data-id=' + post.id + '] .btn-unlike')
+		postElem.text('♥ ' + post .new_like_count);
+	});
+})
