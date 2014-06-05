@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+  devise_for :admins
   get 'comments/new'
 
   resources :posts do
@@ -7,7 +9,6 @@ Rails.application.routes.draw do
     resources :likes
   end
 
-  devise_for :users
   root 'posts#index'
 
   resources :tags
