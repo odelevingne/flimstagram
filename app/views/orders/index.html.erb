@@ -2,6 +2,7 @@
 	<% @orders.each  do |order| %>
 		<%= order.user.email %>
 		<%= link_to order.post.description, '/posts' %>
+		<%= order.number %>
 	<% end %>
 <% else %>
 

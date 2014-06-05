@@ -30,7 +30,7 @@ describe 'Orders page:' do
 
 	context 'with orders:' do
 		before do
-			christmas_day = Date.new(2013, 12, 15)
+			christmas_day = Date.new(2013, 12, 25)
 
 			login_as admin, scope: :admin
 			Order.create(id: 1, post: post, user: user, created_at: christmas_day)
