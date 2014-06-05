@@ -1,0 +1,10 @@
+<% if @orders.any? %>
+	<% @orders.each  do |order| %>
+		<%= order.user.email %>
+		<%= link_to order.post.description, '/posts' %>
+	<% end %>
+<% else %>
+
+No orders have been placed
+
+<% end %>
