@@ -25,7 +25,7 @@
 
 	<% if user_signed_in? %>
 		<% if like = current_user.likes.find_by(post: post) %>
-		  <%= link_to "♥ #{post.likes.count}", post_like_path(post.id, like), method: :delete, :class => 'btn btn-lg btn-default btn-unlike'%>	     
+		  <%= link_to "♥ #{post.likes.count}", post_like_path(post.id, like), :class => 'btn btn-lg btn-default btn-unlike'%>	     
 		<% else %>
 		  <%= link_to "♥ #{post.likes.count}", post_likes_path(post), :class => 'btn btn-lg btn-default btn-like'%>
 		<% end %>

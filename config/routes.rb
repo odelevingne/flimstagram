@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
-    resources :likes
+    resources :likes do
+    	collection do
+    		delete :destroy
+    	end
+    end
   end
 
   root 'posts#index'

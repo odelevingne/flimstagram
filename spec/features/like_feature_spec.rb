@@ -18,7 +18,7 @@ describe 'Liking a post:' do
 				expect(page).to have_content "♥ 0"
 			end
 
-			xspecify 'when a user clicks the like button it registers a like' do
+			specify 'when a user clicks the like button it registers a like' do
 				visit '/posts'
 
 				click_link '♥ 0'
@@ -26,7 +26,7 @@ describe 'Liking a post:' do
 
 			end
 
-			xspecify 'a user can undo a like' do
+			specify 'a user can undo a like' do
 				
 				visit '/posts'
 
@@ -36,7 +36,7 @@ describe 'Liking a post:' do
 				expect(page).to have_content('♥ 0')
 			end
 
-			xspecify "a user can see another user's like" do
+			specify "a user can see another user's like" do
 
 				visit '/posts'
 
@@ -49,7 +49,7 @@ describe 'Liking a post:' do
 				expect(page).to have_content '♥ 1'
 			end
 
-			xspecify 'a user can like a post that has been liked by another user' do
+			specify 'a user can like a post that has been liked by another user' do
 				visit '/posts'
 
 				click_link '♥ 0'
@@ -73,7 +73,7 @@ describe 'Liking a post:' do
 			Post.create(description: 'Test', user: user, tag_names: 'test, tags')
 		end
 
-		xspecify 'you can only like a post if logged in' do
+		specify 'you can only like a post if logged in' do
 
 			visit '/posts'
 
