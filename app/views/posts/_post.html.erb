@@ -3,7 +3,9 @@
 	<% if post.user %>
 		<p>Posted by: <%= post.user.email %></p>
 	<% end %>
-	<%= image_tag post.picture.url(:medium), class: 'uploaded-pic' %>
+	<% if post.picture.exists? %>
+		<%= image_tag post.picture.url(:medium), class: 'uploaded-pic' %>
+	<% end %>
 	<br/><br/>
 	<% post.tags.each do |tag| %>
 			<%= link_to tag.name, tag_path(tag) %>
@@ -30,7 +32,7 @@
 		  <%= link_to "♥ #{post.likes.count}", post_likes_path(post), :class => 'btn btn-lg btn-default btn-like'%>
 		<% end %>
 	<% else %>
-  	<%= link_to "♥ #{post.likes.count}", new_user_session_path, :class => 'btn btn-lg btn-default btn-like'%>
+  	<%= link_to "♥ #{post.likes.count}", new_user_session_path, :class => 'btn btn-lg btn-default btn-signin-like'%>
   <% end %>
 
 </div>

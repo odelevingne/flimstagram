@@ -6,16 +6,7 @@ $(document).ready(function(){
 		$(this).removeClass('btn-like').addClass('btn-unlike');
 	});
 
-	var connection = new WebSocketRails(window.location.host + '/websocket');
-	channel = connection.subscribe('likes');
-	channel.bind('new', function(post) {
-		var postElem = $('.post[data-id=' + post.id + '] .btn-unlike')
-		postElem.text('♥ ' + post .new_like_count);
-	});
-})
 
-
-$(document).ready(function(){
 	$('body').on('click', '.btn-unlike', function(event){
 		event.preventDefault();
 		$.ajax({ url: this.href, type: 'delete' });
@@ -24,8 +15,14 @@ $(document).ready(function(){
 
 	var connection = new WebSocketRails(window.location.host + '/websocket');
 	channel = connection.subscribe('likes');
+	
+	channel.bind('new', function(post) {
+		var postElem = $('.post[data-id=' + post.id + '] .btn-unlike')
+		postElem.text('♥ ' + post.new_like_count);
+	});
+
 	channel.bind('destroy', function(post) {
 		var postElem = $('.post[data-id=' + post.id + '] .btn-like')
-		postElem.text('♥ ' + post .new_like_count);
+		postElem.text('♥ ' + post.new_like_count);
 	});
 })

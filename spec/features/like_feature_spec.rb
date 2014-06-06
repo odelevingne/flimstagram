@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Liking a post:' do
+describe 'Liking a post:', js: true do
 
 	context 'Logged in:' do
 
@@ -22,6 +22,7 @@ describe 'Liking a post:' do
 				visit '/posts'
 
 				click_link '♥ 0'
+				sleep 0.5
 				expect(page).to have_content '♥ 1'
 
 			end
@@ -31,7 +32,9 @@ describe 'Liking a post:' do
 				visit '/posts'
 
 				click_link '♥ 0'
+				sleep 0.5
 				click_link '♥ 1'
+				sleep 0.5
 
 				expect(page).to have_content('♥ 0')
 			end
@@ -41,10 +44,12 @@ describe 'Liking a post:' do
 				visit '/posts'
 
 				click_link '♥ 0'
+				sleep 0.5
 
 				logout(:user)
 
 				login_as user2
+				visit '/posts'
 
 				expect(page).to have_content '♥ 1'
 			end
@@ -53,13 +58,14 @@ describe 'Liking a post:' do
 				visit '/posts'
 
 				click_link '♥ 0'
-				sleep 1
+				sleep 0.5
 				logout(:user)
 
 				login_as user2
 
 				visit '/posts'
 				click_link '♥ 1'
+				sleep 0.5
 
 				expect(page).to have_content '♥ 2'
 			end
@@ -78,12 +84,13 @@ describe 'Liking a post:' do
 			visit '/posts'
 
 			click_link '♥ 0'
-
-			expect(page).to have_link '♥ 1'
+			sleep 0.5
+			expect(page).to have_content '♥ 1'
 
 			logout(:user)
-
-			expect(page).not_to have_link '♥ 1'
+			visit '/posts'
+			click_link '♥ 1'
+			expect(page).to have_content 'Sign in'
 		end
 	end
 end
