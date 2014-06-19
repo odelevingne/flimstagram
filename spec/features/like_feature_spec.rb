@@ -22,7 +22,7 @@ describe 'Liking a post:', js: true do
 				visit '/posts'
 
 				click_link '♥ 0'
-				sleep 0.5
+				sleep 2
 				expect(page).to have_content '♥ 1'
 
 			end
@@ -32,9 +32,9 @@ describe 'Liking a post:', js: true do
 				visit '/posts'
 
 				click_link '♥ 0'
-				sleep 0.5
+				sleep 2
 				click_link '♥ 1'
-				sleep 0.5
+				sleep 2
 
 				expect(page).to have_content('♥ 0')
 			end
@@ -44,7 +44,7 @@ describe 'Liking a post:', js: true do
 				visit '/posts'
 
 				click_link '♥ 0'
-				sleep 0.5
+				sleep 2
 
 				logout(:user)
 
@@ -58,14 +58,14 @@ describe 'Liking a post:', js: true do
 				visit '/posts'
 
 				click_link '♥ 0'
-				sleep 0.5
+				sleep 2
 				logout(:user)
 
 				login_as user2
 
 				visit '/posts'
 				click_link '♥ 1'
-				sleep 0.5
+				sleep 2
 
 				expect(page).to have_content '♥ 2'
 			end
@@ -84,7 +84,7 @@ describe 'Liking a post:', js: true do
 			visit '/posts'
 
 			click_link '♥ 0'
-			sleep 0.5
+			sleep 2
 			expect(page).to have_content '♥ 1'
 
 			logout(:user)

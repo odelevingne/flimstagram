@@ -1,11 +1,13 @@
-<% if @orders.any? %>
-	<% @orders.each  do |order| %>
-		<%= order.user.email %>
-		<%= link_to order.post.description, '/posts' %>
-		<%= order.number %>
+<div class='orders'>
+	<% if @orders.any? %>
+		<% @orders.each  do |order| %>
+			<%= order.user.email %>
+			<%= link_to order.post.description, '/posts' %>
+			<%= order.number %>
+		<% end %>
+	<% else %>
+
+	No orders have been placed
+
 	<% end %>
-<% else %>
-
-No orders have been placed
-
-<% end %>
+</div>
