@@ -1,6 +1,6 @@
 Flimstagram - An instagram clone
 ----
-For our week 9/10 challenge at Makers Academy, we were set the task to create an instagram clone.
+For our weeks 9 & 10 challenge at Makers Academy, we were set the task to create an instagram clone.
 
 Objectives of exercise
 ----
