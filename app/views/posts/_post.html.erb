@@ -35,4 +35,7 @@
   	<%= link_to "♥ #{post.likes.count}", new_user_session_path, :class => 'btn btn-lg btn-default btn-signin-like'%>
   <% end %>
 
+   <%= link_to "Buy", new_post_charge_path(post), :class => 'btn btn-lg btn-default'%>
+
+
 </div>

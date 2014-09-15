@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
+    resources :charges
     resources :likes do
     	collection do
     		delete :destroy
