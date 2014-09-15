@@ -9,7 +9,6 @@ Practicing setting up a new app in a Ruby on Rails environment including everyth
 What still needs to be done
 ----
 - Frontend work
-- Implement Stripe for photo payments
 - Implement geo tagging for uploaded photos
 - Sendgrid
 - Actionmailer
@@ -35,6 +34,7 @@ Technologies used
 - jBuilder
 - Javascript
 - AJAX
+- Stripe for payments
 
 How to run it
 ----
